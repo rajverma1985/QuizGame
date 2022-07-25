@@ -1,5 +1,5 @@
 from questions_model import Question
-from data import question_data
+from data import QuestionData
 from quiz_brain import QuizBrain
 
 questions = []
@@ -13,3 +13,5 @@ quiz.next_question()
 
 while quiz.questions_left():
     quiz.next_question()
+
+

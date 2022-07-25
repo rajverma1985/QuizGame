@@ -1,18 +1,34 @@
-question_data = [
-    {"text": "A slug's blood is green.", "answer": "True"},
-    {"text": "The loudest animal is the African Elephant.", "answer": "False"},
-    {"text": "Approximately one quarter of human bones are in the feet.", "answer": "True"},
-    {"text": "The total surface area of a human lungs is the size of a football pitch.", "answer": "True"},
-    {
-        "text": "In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home "
-                "to eat.",
-        "answer": "True"},
-    {"text": "In London, UK, if you happen to die in the House of Parliament, you are entitled to a state funeral.",
-     "answer": "False"},
-    {"text": "It is illegal to pee in the Ocean in Portugal.", "answer": "True"},
-    {"text": "You can lead a cow down stairs but not up stairs.", "answer": "False"},
-    {"text": "Google was originally called 'Backrub'.", "answer": "True"},
-    {"text": "Buzz Aldrin's mother's maiden name was 'Moon'.", "answer": "True"},
-    {"text": "No piece of square dry paper can be folded in half more than 7 times.", "answer": "False"},
-    {"text": "A few ounces of chocolate can to kill a small dog.", "answer": "True"}
-]
+import json
+
+import requests
+
+
+# change the url to dynamic instead of hard coding
+# num_questions = 10
+# category = requests.get('https://opentdb.com/api_category.php')
+# category_d = {key: value for key, value in json.loads(category.text).items()}['trivia_categories']
+# question_data = requests.get(f'https://opentdb.com/api.php?amount={num_questions}&category={category_id}')
+
+
+class QuestionData:
+    category_url = 'https://opentdb.com/api_category.php'
+
+    def __init__(self, num_of_questions):
+        self.num_of_questions = num_of_questions
+
+    def get_category(self, cat_name):
+        get_category = requests.get(self.category_url)
+        category_dict = {key: value for key, value in json.loads(get_category.text).items()}['trivia_categories']
+        for category in category_dict:
+            category['name'].lower()
+            if category['name'] == cat_name:
+                return [category['id'] for category['name'] in category.items()]
+
+    def get_data(self, name):
+        cat_id = self.get_category(name)
+        question_data = requests.get(f'https://opentdb.com/api.php?amount={self.num_of_questions}&category={cat_id[0]}')
+        return question_data.json()
+
+
+# data = QuestionData(10)
+# print(data.get_data('Science: Mathematics'))
