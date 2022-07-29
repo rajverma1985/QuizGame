@@ -6,31 +6,6 @@ num_questions = 10
 # category_dict = {key: value for key, value in json.loads(get_category.text).items()}['trivia_categories']
 
 
-cat = [{'id': 9, 'name': 'General Knowledge'}, {'id': 10, 'name': 'Entertainment: Books'},
-       {'id': 11, 'name': 'Entertainment: Film'}, {'id': 12, 'name': 'Entertainment: Music'},
-       {'id': 13, 'name': 'Entertainment: Musicals & Theatres'}, {'id': 14, 'name': 'Entertainment: Television'},
-       {'id': 15, 'name': 'Entertainment: Video Games'}, {'id': 16, 'name': 'Entertainment: Board Games'},
-       {'id': 17, 'name': 'Science & Nature'}, {'id': 18, 'name': 'Science: Computers'},
-       {'id': 19, 'name': 'Science: Mathematics'}, {'id': 20, 'name': 'Mythology'}, {'id': 21, 'name': 'Sports'},
-       {'id': 22, 'name': 'Geography'}, {'id': 23, 'name': 'History'}, {'id': 24, 'name': 'Politics'},
-       {'id': 25, 'name': 'Art'}, {'id': 26, 'name': 'Celebrities'}, {'id': 27, 'name': 'Animals'},
-       {'id': 28, 'name': 'Vehicles'}, {'id': 29, 'name': 'Entertainment: Comics'},
-       {'id': 30, 'name': 'Science: Gadgets'}, {'id': 31, 'name': 'Entertainment: Japanese Anime & Manga'},
-       {'id': 32, 'name': 'Entertainment: Cartoon & Animations'}]
+cat = {'response_code': 0, 'results': [{'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'easy', 'question': 'What was the name of the WWF professional wrestling tag team made up of the wrestlers Ax and Smash?', 'correct_answer': 'Demolition', 'incorrect_answers': ['The Dream Team', 'The Bushwhackers', 'The British Bulldogs']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'easy', 'question': 'Which best selling toy of 1983 caused hysteria, resulting in riots breaking out in stores?', 'correct_answer': 'Cabbage Patch Kids', 'incorrect_answers': ['Transformers', 'Care Bears', 'Rubik&rsquo;s Cube']}, {'category': 'General Knowledge', 'type': 'boolean', 'difficulty': 'easy', 'question': 'Video streaming website YouTube was purchased in it&#039;s entirety by Facebook for US$1.65 billion in stock.', 'correct_answer': 'False', 'incorrect_answers': ['True']}, {'category': 'General Knowledge', 'type': 'boolean', 'difficulty': 'easy', 'question': 'Gumbo is a stew that originated in Louisiana.', 'correct_answer': 'True', 'incorrect_answers': ['False']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'medium', 'question': 'Which language is NOT Indo-European?', 'correct_answer': 'Hungarian', 'incorrect_answers': ['Russian', 'Greek', 'Latvian']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'medium', 'question': 'Who is a co-founder of music streaming service Spotify?', 'correct_answer': 'Daniel Ek', 'incorrect_answers': ['Sean Parker', 'Felix Miller', 'Michael Breidenbruecker']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'easy', 'question': 'According to Sherlock Holmes, &quot;If you eliminate the impossible, whatever remains, however improbable, must be the...&quot;', 'correct_answer': 'Truth', 'incorrect_answers': ['Answer', 'Cause', 'Source']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'easy', 'question': 'The New York Times slogan is, &ldquo;All the News That&rsquo;s Fit to&hellip;&rdquo;', 'correct_answer': 'Print', 'incorrect_answers': ['Digest', 'Look', 'Read']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'medium', 'question': 'Which of these words means &quot;idle spectator&quot;?', 'correct_answer': 'Gongoozler', 'incorrect_answers': ['Gossypiboma', 'Jentacular', 'Meupareunia']}, {'category': 'General Knowledge', 'type': 'multiple', 'difficulty': 'easy', 'question': 'Who is the author of Jurrasic Park?', 'correct_answer': 'Michael Crichton', 'incorrect_answers': ['Peter Benchley', 'Chuck Paluhniuk', 'Irvine Welsh']}]}
 
-# var = input("Type the name : ").lower()
-
-
-def idn(name):
-    for n in cat:
-        n['name'].lower()
-        if n['name'] == name:
-            id = [n['id'] for n['name'] in n.items()]
-    return id
-
-cat_input =input("Choose a category: ")
-
-cat_id=idn(cat_input)
-
-question_data = requests.get(f'https://opentdb.com/api.php?amount={num_questions}&category={cat_id[0]}')
-print(question_data.json())
+print(cat['results'])
