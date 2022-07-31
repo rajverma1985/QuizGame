@@ -4,13 +4,14 @@ from quiz_brain import QuizBrain
 
 question_data = []
 questions_object = QuestionData()
-question_data.append(questions_object.get_data())
+
 questions = []
-print(question_data)
+
+user_input = input(f"Please choose a category: {questions_object.get_category()}\n")
+question_data.append(questions_object.get_data(user_input)['results'])
 
 for data in question_data[0]:
-    question = Question(data["question"], data["correct_answer"])
-    questions.append(question)
+    questions.append(Question(data["question"], data["correct_answer"]))
 
 
 quiz = QuizBrain(questions)
@@ -18,6 +19,8 @@ quiz.next_question()
 
 while quiz.questions_left():
     quiz.next_question()
+
+## add logic for multiple types instead of just boolean and give options to user to choose from.
 
 
 
