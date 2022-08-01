@@ -1,6 +1,6 @@
-from questions_model import Question
-from data import QuestionData
-from quiz_brain import QuizBrain
+from src.quizapp.quizbrain.questions_model import Question
+from src.quizapp.data.qdata import QuestionData
+from src.quizapp.quizbrain.quiz_brain import QuizBrain
 
 question_data = []
 questions_object = QuestionData()

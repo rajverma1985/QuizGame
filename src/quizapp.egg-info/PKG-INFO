@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: quizapp
+Version: 0.0.3
+Summary: A quiz game package with OOPS in python
+Home-page: https://github.com/rajverma1985/QuizGame
+Author: Raj Verma
+Author-email: rjnshvrm23@gmail.com
+Project-URL: Bug Tracker, https://github.com/rajverma1985/QuizGame/issues
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Quiz game README & Legend
+
+This is a simple quizgame written in python. You can use this to host several different quizes.
+
+
+
+
+
+
+# Markdown Example
+[Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+to write your content.
