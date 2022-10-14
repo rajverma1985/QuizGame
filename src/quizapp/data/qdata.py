@@ -1,6 +1,18 @@
 import json
 import requests
 
+# example URL1 : https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=boolean
+# example URL2: https://opentdb.com/api.php?amount=10&category=11&difficulty=hard&type=multiple
+
+api_url = "https://opentdb.com/api.php"
+params = {"amount": 10,
+          "category": 9,
+          "difficulty": 'medium',
+          "type": 'boolean'
+          }
+
+print(requests.get(api_url, params=params).json())
+
 
 class QuestionData:
     category_url = 'https://opentdb.com/api_category.php'
