@@ -11,7 +11,7 @@ params = {"amount": 10,
           "type": 'boolean'
           }
 
-print(requests.get(api_url, params=params).json())
+data = requests.get(api_url, params=params).json()
 
 
 class QuestionData:
