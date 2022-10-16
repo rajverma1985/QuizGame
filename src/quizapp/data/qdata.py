@@ -5,6 +5,7 @@ import requests
 # example URL2: https://opentdb.com/api.php?amount=10&category=11&difficulty=hard&type=multiple
 
 api_url = "https://opentdb.com/api.php"
+category_api = "https://opentdb.com/api_category.php"
 params = {"amount": 10,
           "category": 9,
           "difficulty": 'medium',
