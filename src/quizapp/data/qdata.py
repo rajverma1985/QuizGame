@@ -31,7 +31,4 @@ class QuestionData:
         for cat in self.get_category():
             if cat['name'].lower() == input_cat.lower():
                 question_data = requests.get(self.data_url, params=params)
-
-                # requests.get(f"{self.data_url}?amount={self.num_of_questions}"
-                #                              f"&category={cat['id']}&type={self.cat_type}")
         return question_data.json()
