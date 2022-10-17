@@ -1,19 +1,25 @@
+import html
+
+
 class QuizBrain:
     def __init__(self, question_list, q_num=0, score=0):
         self.question_list = question_list
         self.q_num = q_num
         self.score = score
         self.correct = 0
+        self.current_question = None
 
     def questions_left(self):
         # index 12 doesn't exit, so we can only eval till < and not = as index 12 will give out of range
         return self.q_num < len(self.question_list)
 
     def next_question(self):
-        current_question = self.question_list[self.q_num]
+        self.current_question = self.question_list[self.q_num]
         self.q_num += 1
-        answer = input(f"Q.{self.q_num} {current_question.text} (True/False?)\n")
-        self.check_answer(answer, current_question.answer)
+        # human-readable format and un-escaping the special characters
+        q_text = html.unescape(self.current_question.text)
+        answer = input(f"Q.{self.q_num}: {q_text} (True/False?)\n")
+        self.check_answer(answer, self.current_question.answer)
 
     def check_answer(self, answer, correct_answer):
         if answer.lower() == correct_answer.lower():
