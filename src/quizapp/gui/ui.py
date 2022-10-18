@@ -1,8 +1,16 @@
 # class based UI using tkinter
 from tkinter import *
+from src.quizapp.data.qdata import QuestionData
+from src.quizapp.quizbrain.questions_model import Question
+from src.quizapp.quizbrain.quiz_brain import QuizBrain
 
 THEME_COLOR = "#375362"
 score = 10
+questions_object = QuestionData()
+category_list = questions_object.get_category()
+category = [cat['name'] for cat in category_list]
+questions = []
+question_data = []
 
 
 # legend: 2 column and 3 rows structure. Get a theme color, padding of 20 across,
@@ -15,6 +23,15 @@ class QuizUi:
         self.window = Tk()
         self.window.title("Quiz Game")
         self.window.config(padx=20, pady=20, bg=THEME_COLOR)
+        dropdown = StringVar(self.window)
+        dropdown.set(category[0])
+        choice = dropdown.get()
+        options = OptionMenu(self.window, dropdown, *category)
+        options.grid(row=0, column=0)
+        question_data.append(questions_object.get_data(choice)['results'])
+        for data in question_data[0]:
+            questions.append(Question(data["question"], data["correct_answer"]))
+        question = QuizBrain(questions)
         self.text = Label(font=("Arial", 20), text=f"score:{score}", fg="white", bg=THEME_COLOR)
         self.text.grid(row=0, column=1)
         self.canvas = Canvas(width=300, height=250, bg="white")
@@ -29,6 +46,7 @@ class QuizUi:
         self.wr_button = Button(image=wrong_image, highlightthickness=0)
         self.rt_button.grid(row=2, column=0)
         self.wr_button.grid(row=2, column=1)
+        self.canvas.itemconfig(self.ques_canvas, text=question, fill="black", width=290)
         self.window.mainloop()
 
 

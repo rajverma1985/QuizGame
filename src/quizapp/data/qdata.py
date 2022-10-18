@@ -28,7 +28,7 @@ class QuestionData:
         return category_dict
 
     def get_data(self, input_cat):
-        for cat in self.get_category():
-            if cat['name'].lower() == input_cat.lower():
-                question_data = requests.get(self.data_url, params=params)
+        # for cat in self.get_category():
+            # if cat['name'].lower() == input_cat.lower():
+        question_data = requests.get(self.data_url, params=params)
         return question_data.json()
