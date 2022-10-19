@@ -2,11 +2,10 @@ import html
 
 
 class QuizBrain:
-    def __init__(self, question_list, q_num=0, score=0):
-        self.question_list = question_list
-        self.q_num = q_num
-        self.score = score
-        self.correct = 0
+    def __init__(self, q_list):
+        self.q_num = 0
+        self.score = 0
+        self.question_list = q_list
         self.current_question = None
 
     def questions_left(self):
@@ -18,14 +17,12 @@ class QuizBrain:
         self.q_num += 1
         # human-readable format and un-escaping the special characters
         q_text = html.unescape(self.current_question.text)
-        answer = input(f"Q.{self.q_num}: {q_text} (True/False?)\n")
-        self.check_answer(answer, self.current_question.answer)
+        return f"Q.{self.q_num}: {q_text}"
 
-    def check_answer(self, answer, correct_answer):
+    def check_answer(self, answer):
+        correct_answer = self.current_question.answer
         if answer.lower() == correct_answer.lower():
             self.score += 5
-            print(f"Correct the answer is {correct_answer}")
-            self.correct += 1
+            return True
         else:
-            print(f"Incorrect the correct answer is {correct_answer}")
-        print(f"Your total is {self.score} points, you have {self.correct}/{self.q_num} questions right.")
+            return False
