@@ -1,7 +1,7 @@
 # class based UI using tkinter
 from tkinter import *
-from src.quizapp.data.qdata import QuestionData
-from src.quizapp.quizbrain.quiz_brain import QuizBrain
+from quizapp.data.qdata import QuestionData
+from quizapp.quizbrain.quiz_brain import QuizBrain
 
 THEME_COLOR = "#375362"
 score = 0

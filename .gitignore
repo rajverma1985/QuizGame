@@ -4,3 +4,5 @@
 quizgame.egg-*
 quizapp.egg-*
 dist/
+build/
+*.spec
