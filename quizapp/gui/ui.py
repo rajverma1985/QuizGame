@@ -4,7 +4,6 @@ from quizapp.data.qdata import QuestionData
 from quizapp.quizbrain.quiz_brain import QuizBrain
 
 THEME_COLOR = "#375362"
-score = 0
 category = [cat['name'] for cat in QuestionData().get_category()]
 
 
@@ -36,6 +35,7 @@ class QuizUi:
         self.window.mainloop()
 
     def get_ques(self):
+        # once on the next question background should change from red/green to original white.
         self.canvas.config(bg="white")
         if self.quiz.questions_left():
             self.score_label.config(text=f"Score: {self.quiz.score}")
@@ -47,9 +47,11 @@ class QuizUi:
             self.wr_button.config(state="disabled")
 
     def right_pressed(self):
+        # check if the answer is right
         self.give_feedback(self.quiz.check_answer("True"))
 
     def wrong_pressed(self):
+        # check if the answer is wrong
         self.give_feedback(self.quiz.check_answer("False"))
 
     def give_feedback(self, is_right):
@@ -58,8 +60,3 @@ class QuizUi:
         else:
             self.canvas.config(bg="red")
         self.window.after(1000, self.get_ques)
-
-# dropdown = StringVar(self.window)
-# dropdown.set("Select Category")
-# options = OptionMenu(self.window, dropdown, *category)
-# options.grid(row=0, column=0)
